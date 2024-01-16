@@ -65,10 +65,10 @@ const testUsers = async (req, res) => {
 
 const getUsers = async (req, res) => {
   try {
-    if (!req.body.email || !req.body.password) {
-      res.status(400);
-      throw new Error("faild");
-    }
+    // if (!req.body.email || !req.body.password) {
+    //   res.status(400);
+    //   throw new Error("faild");
+    // }
     res
       .json({
         message: "success",

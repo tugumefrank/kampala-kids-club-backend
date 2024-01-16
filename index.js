@@ -19,6 +19,7 @@ app.use(bodyParser.text({ type: "text/*" }));
 //Routes
 import userRoutes from "./routes/userRoutes.js";
 app.use("/users", userRoutes);
+app.use("/", userRoutes);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
