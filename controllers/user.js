@@ -20,7 +20,8 @@ const generateRandomString = (length) => {
 const tx_ref = generateRandomString(10);
 
 const testUsers = async (req, res) => {
-  const { mobileNumber, mobileNetwork, email, price } = req.body;
+  const { mobileNumber, mobileNetwork, email, price, eventId, eventTitle } =
+    req.body;
   const payload = {
     phone_number: mobileNumber,
     network: mobileNetwork,
@@ -28,6 +29,11 @@ const testUsers = async (req, res) => {
     currency: "UGX",
     email: email,
     tx_ref: tx_ref,
+    meta: {
+      flightID: "213213AS",
+      eventId: eventId,
+      eventTitle: eventTitle,
+    },
     redirect_url: `${process.env.PUBLIC_SERVER_URL}/profile`,
   };
   try {
@@ -40,6 +46,9 @@ const testUsers = async (req, res) => {
       .then((data) => {
         console.log("Response:", data);
         // Send the Flutterwave API response back to the client
+        if (!true) {
+          return;
+        }
         res
           .json({
             flutterwaveResponse: data,
