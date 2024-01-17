@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 const url = "https://api.flutterwave.com/v3/charges?type=mobile_money_uganda";
-const token = process.env.FLW_SECRET_KEY_TEST;
+const token = process.env.FLW_SECRET_KEY;
 
 const headers = {
   Authorization: `Bearer ${token}`,
@@ -20,8 +20,15 @@ const generateRandomString = (length) => {
 const tx_ref = generateRandomString(10);
 
 const testUsers = async (req, res) => {
-  const { mobileNumber, mobileNetwork, email, price, eventId, eventTitle } =
-    req.body;
+  const {
+    mobileNumber,
+    mobileNetwork,
+    email,
+    price,
+    eventId,
+    eventTitle,
+    buyerId,
+  } = req.body;
   const payload = {
     phone_number: mobileNumber,
     network: mobileNetwork,
@@ -33,6 +40,7 @@ const testUsers = async (req, res) => {
       flightID: "213213AS",
       eventId: eventId,
       eventTitle: eventTitle,
+      buyerId: buyerId,
     },
     redirect_url: `${process.env.PUBLIC_SERVER_URL}/profile`,
   };
@@ -46,9 +54,7 @@ const testUsers = async (req, res) => {
       .then((data) => {
         console.log("Response:", data);
         // Send the Flutterwave API response back to the client
-        if (!true) {
-          return;
-        }
+
         res
           .json({
             flutterwaveResponse: data,
