@@ -8,8 +8,9 @@ import {
   deleteUsers,
   testUsers,
 } from "../controllers/user.js";
+import { ChildPayment } from "../controllers/ChildPayment.js";
 
-router.post("/create", createUsers);
+router.post("/create", ChildPayment);
 router.post("/test", testUsers);
 router.get("/", getUsers);
 router.put("/:id", updateUsers);

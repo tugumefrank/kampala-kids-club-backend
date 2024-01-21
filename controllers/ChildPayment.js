@@ -20,28 +20,17 @@ const generateRandomString = (length) => {
 };
 const tx_ref = generateRandomString(10);
 
-const testUsers = async (req, res) => {
-  const {
-    mobileNumber,
-    mobileNetwork,
-    email,
-    price,
-    eventId,
-    eventTitle,
-    buyerId,
-  } = req.body;
+const ChildPayment = async (req, res) => {
+  const { mobileNumber, mobileNetwork } = req.body;
   const payload = {
     phone_number: mobileNumber,
     network: mobileNetwork,
-    amount: parseInt(price, 10),
+    amount: 500,
     currency: "UGX",
-    email: email,
+    email: "frankholmez@gmail.com",
     tx_ref: tx_ref,
     meta: {
       flightID: "213213AS",
-      eventId: eventId,
-      eventTitle: eventTitle,
-      buyerId: buyerId,
     },
     redirect_url: `${process.env.PUBLIC_SERVER_URL}/profile`,
   };
@@ -78,62 +67,4 @@ const testUsers = async (req, res) => {
   //   next(error);
   // }
 };
-
-const getUsers = async (req, res) => {
-  try {
-    // if (!req.body.email || !req.body.password) {
-    //   res.status(400);
-    //   throw new Error("faild");
-    // }
-    res
-      .json({
-        message: "success",
-        email: "frank@gmail.com",
-        password: "1234567",
-      })
-      .status(201);
-    console.log(req.body);
-  } catch (error) {
-    next(error);
-  }
-};
-
-// decription: create users
-// route: /users
-// acess: /private
-const createUsers = async (req, res, next) => {
-  try {
-    if (
-      !req.body.email ||
-      !req.body.password ||
-      !req.body.fullName ||
-      !req.body.userName
-    ) {
-      res.status(400);
-      throw new Error("faild");
-    }
-    res
-      .json({
-        message: "success",
-        email: "frank@gmail.com",
-        password: "1234567",
-      })
-      .status(201);
-    console.log(req.body);
-  } catch (error) {
-    next(error);
-  }
-};
-// decription: update users
-// route: /users
-// acess: /private
-const updateUsers = async (req, res) => {
-  res.json({ message: "update user", phone: "0774671234" });
-};
-// decription: delete users
-// route: /users
-// acess: /private
-const deleteUsers = async (req, res) => {
-  res.json({ message: "delete user", phone: "0774671234" });
-};
-export { getUsers, createUsers, updateUsers, deleteUsers, testUsers };
+export { ChildPayment };
