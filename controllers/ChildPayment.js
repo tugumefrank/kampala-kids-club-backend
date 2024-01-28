@@ -30,7 +30,7 @@ const ChildPayment = async (req, res) => {
     email: "frankholmez@gmail.com",
     tx_ref: tx_ref,
     meta: {
-      flightID: "213213AS",
+      ChildId: "123456789",
     },
     redirect_url: `${process.env.PUBLIC_SERVER_URL}/profile`,
   };
