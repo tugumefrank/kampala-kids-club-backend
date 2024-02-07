@@ -21,7 +21,7 @@ const generateRandomString = (length) => {
 const tx_ref = generateRandomString(10);
 
 const ChildPayment = async (req, res) => {
-  const { mobileNumber, mobileNetwork } = req.body;
+  const { mobileNumber, mobileNetwork, ...restChildDetails } = req.body;
   const payload = {
     phone_number: mobileNumber,
     network: mobileNetwork,
@@ -29,9 +29,7 @@ const ChildPayment = async (req, res) => {
     currency: "UGX",
     email: "frankholmez@gmail.com",
     tx_ref: tx_ref,
-    meta: {
-      flightID: "213213AS",
-    },
+    meta: { ...restChildDetails },
     redirect_url: `${process.env.PUBLIC_SERVER_URL}/profile`,
   };
   try {
