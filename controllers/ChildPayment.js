@@ -19,6 +19,7 @@ const generateRandomString = (length) => {
   return result;
 };
 const tx_ref = generateRandomString(10);
+console.log(tx_ref);
 
 const ChildPayment = async (req, res) => {
   const { mobileNumber, mobileNetwork, ...restChildDetails } = req.body;
