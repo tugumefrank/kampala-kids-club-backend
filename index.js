@@ -3,7 +3,7 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 const app = express();
-import connectDb from "./config/db.js";
+
 import bodyParser from "body-parser";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 const PORT = process.env.PORT;
