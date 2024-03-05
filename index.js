@@ -20,7 +20,7 @@ app.use(bodyParser.text({ type: "text/*" }));
 
 //Routes
 import userRoutes from "./routes/userRoutes.js";
-import { connected } from "process";
+
 app.use("/users", userRoutes);
 app.use("/", userRoutes);
 // SSE route
