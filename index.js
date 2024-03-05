@@ -3,7 +3,7 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 const app = express();
-
+app.use(cors({ origin: "*" }));
 import bodyParser from "body-parser";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 
@@ -13,7 +13,6 @@ const PORT = 5000;
 // connectDb();
 //middleware
 
-app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.text({ type: "text/*" }));
