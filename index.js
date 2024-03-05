@@ -6,10 +6,10 @@ const app = express();
 
 import bodyParser from "body-parser";
 import { errorHandler } from "./middleware/errorMiddleware.js";
-const PORT = process.env.PORT;
+
 import { EventEmitter } from "events";
 const eventEmitter = new EventEmitter();
-
+const PORT = 5000;
 // connectDb();
 //middleware
 
