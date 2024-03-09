@@ -3,7 +3,7 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "https://valiyu.com" }));
 import bodyParser from "body-parser";
 import { errorHandler } from "./middleware/errorMiddleware.js";
 
@@ -19,7 +19,7 @@ app.use(bodyParser.text({ type: "text/*" }));
 
 //Routes
 import userRoutes from "./routes/userRoutes.js";
-
+app.options("*", cors());
 app.use("/users", userRoutes);
 app.use("/", userRoutes);
 // SSE route
